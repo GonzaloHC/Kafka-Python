@@ -26,3 +26,7 @@ Los eventos se almacenan en "topics", que actúan como contenedores para agrupar
 ### Interactuar con los elementos de Kafka
 
 Para comenzar a interactuar con los elementos de kafka, primero hay que asegurarse de tener inicializado kafka, y luego puedes comenzar a probar. Para ello puedes ayudarte de los comandos que se encuentran en el archivo [COMANDOS](comandos-basicos.sh), importante identificar cómo se va a consumir los mensajes en los topics, sobre todo si existe un grupo de consumers, y se está trabajando con varias particiones en los topics.
+
+### Apache Kafka con Cliente de Python a través de Confluent.
+
+Se puede utilizar el módulo de python de confluent para interactuar con kafka, resulta una solución muy útil para los entornos de producción. y los scripts, para crear topics, producers y consumers los consigue en la carpeta [Python-kafka](python-kafka)
