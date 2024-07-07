@@ -30,3 +30,7 @@ Para comenzar a interactuar con los elementos de kafka, primero hay que asegurar
 ### Apache Kafka con Cliente de Python a través de Confluent.
 
 Se puede utilizar el módulo de python de confluent para interactuar con kafka, resulta una solución muy útil para los entornos de producción. y los scripts, para crear topics, producers y consumers los consigue en la carpeta [Python-kafka](python-kafka)
+
+Tienes la carpeta [ejemplo_Uso](ejemplo_Uso), allí encontrar unos notebooks, con ejemplo de como usar pandas para leer mensajes desde kafka y guardarlos en un dataframe, o incluso hay un ejercicio dónde se lee un archivo ".csv", y el productor envía fila por fila de ese archivo, y el consumidor los recibe para luego, procesarlos y graficarlo. Es un ejercicio muy interesante que abre las puertas a pensar en infinitas posibilidades. 
+
+Espero este repositorio pueda ayudarte a iniciar tu camino dentro de Kafka. A mi me sirvió. 
