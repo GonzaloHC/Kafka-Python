@@ -11,7 +11,7 @@ kafka-topics.sh --bootstrap-server localhost:9092 --list
 #borrar topics
 kafka-topics.sh --bootstrap-server localhost:9092 --topic prueba --delete
 #crear un topic con particiones
-kafka-topics.sh --bootstrap-server localhost:9092 --topic particiones --create --partitions 2
+kafka-topics.sh --bootstrap-server localhost:9092 --topic pruebaparticiones --create --partitions 2
 
 #REPLICAS 
 #Cuando se está en un entorno distribuido 
@@ -29,3 +29,35 @@ kafka-console-producer.sh --bootstrap-server localhost:9092 --topic pruebapartic
 #Si queremos confirmación de que todos los mensajes están llegando de forma correcta, con agregar una nueva propiedad
 kafka-console-producer.sh --bootstrap-server localhost:9092 --topic pruebaparticiones --producer-property acks=all
 
+###########
+#CONSUMERS#
+###########
+
+#Para consumir los mensajes en tiemp real basta  con un topic específico basta con usar el comando
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic pruebaparticiones
+#Para consumir los mensajes desde el principio 
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic pruebaparticiones --from-beginning
+#Si los mensajes llegaron a particiones distintas o si queremos saber la hora en la que se produjeron etc.
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic pruebaparticiones --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
+
+###########
+#CONSUMER GROUPS
+###########
+
+#Productor balancea aleatoriamente mensajes entre particiones de un mismo topic
+kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic topicgrupo
+
+#Iniciar un consumidor asociado a un grupo
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topicgrupo --group testgrupoconsumers
+
+#Listar los consumidores que tenemos
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+
+#Mostrar mas detalles de un grupo de consumidores
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group pruebagrupoconsumers
+
+#Mover el offset a la posición zero (no se formaliza hasta que se lanza el "--execute")
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group pruebagrupoconsumers --reset-offsets --to-earliest --topic topicgrupo --dry-run
+
+#Mover el offset a la posición zero
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group pruebagrupoconsumers --reset-offsets --to-earliest --topic topicgrupo --excute
