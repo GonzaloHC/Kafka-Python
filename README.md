@@ -13,7 +13,7 @@ En mi caso estoy trabajando desde WSL en windows, se ha creado un documento con 
 
 ### Inicializar Kafka
 
-Para inicializar Kafka y comenzar a trabajar con esta poderosa herramienta desde su pc, pude seguir las instrucciones paso a paso, que se encuantran en el documento [INICIA-KAFKA](inicializar_kafka.shS)
+Para inicializar Kafka y comenzar a trabajar con esta poderosa herramienta desde su pc, pude seguir las instrucciones paso a paso, que se encuantran en el documento [INICIA-KAFKA](inicializar_kafka.sh)
 
 ### Eventos, Productores y Consumidores
 
